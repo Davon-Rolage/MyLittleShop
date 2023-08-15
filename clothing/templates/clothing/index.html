@@ -1,7 +1,28 @@
 {% extends 'clothing/base.html' %}
 
 {% block content %}
-<h5 class="display-5">This is the main page!</h5>
-
-
+<h5 class="display-5">Welcome to My Little Shop!</h5>
+<div class="container-fluid" style="font-size: 18px; font-family: monospace">
+    This application allows you (Vendor) to manage your products, partners and sales.<br>
+    <ol>
+        <li>
+            "Price List" tab shows what products you have available for production and their price.
+        </li>
+        <li>
+            "My Storage" tab shows products and how many of them you have in stock.
+        </li>
+        <li>
+            "Partners" tab shows your partners and their info.
+        </li>
+        <li>
+            "Partners' Storages" tab shows your partners and products that you sent to them and how many.
+        </li>
+        <li>
+            "Sales" tab shows confirmed sales of the products that you sent to your partners. 
+        </li>
+    </ol>
+    <p>
+        If you created a superuser, you can change all of the records via <a href="{% url 'admin:index' %}">Django admin site</a>.
+    </p>
+</div>
 {% endblock %}
