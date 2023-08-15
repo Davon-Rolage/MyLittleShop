@@ -1,4 +1,4 @@
-# README for Poetorium Django Project
+# README for MyLittleShop Django Project
 MyLittleShop is a Django project that allows Vendor to keep records of the following:
 - Vendor's sales records;
 - Vendor's price list;
