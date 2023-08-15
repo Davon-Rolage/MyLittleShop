@@ -1,0 +1,62 @@
+{% extends 'clothing/base.html' %}
+{% block content %}
+
+<h5 class="display-5">Partners</h5>
+<a class="btn btn-outline-info" href="/admin/clothing/partner/" role="button" style="margin-bottom: 5px">Add or change</a>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Partner ID</th>
+            <th scope="col">Partner</th>
+            <th scope="col">Address</th>
+            <th scope="col">Telephone Number</th>
+            <th scope="col">Website</th>
+            <th scope="col">Notes</th>
+            <th scope="col">Added at</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for partner in object_list %}
+        <tr>
+            <td>{{ partner.pk }}</td>
+            <td>{{ partner.partner_name }}</td>
+            <td>{{ partner.address }}</td>
+            <td>{{ partner.telephone_number }}</td>
+            <td>{{ partner.website }}</td>
+            <td>{{ partner.notes }}</td>
+            <td>{{ partner.added_at }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<script>
+    $(document).ready(function () {
+        var currentDate = new Date().toISOString().slice(0, 10).split('-');
+        var fileName = 'partners_' + currentDate[2] + '.' + currentDate[1] + '.' + currentDate[0];
+        var table = $('table').DataTable({
+            dom: 'Blfrtip',
+            buttons: [{
+                text: 'Export To Excel',
+                extend: 'excelHtml5',
+                filename: fileName,
+                exportOptions: {
+                    modifier: {
+                        selected: true
+                    },
+                    columns: [0, 1, 2, 3, 4, 5, 6],
+                    format: {
+                        header: function (data, columnIdx) {
+                            return data;
+                        },
+                    }
+                },
+                footer: false,
+            }],
+            order: [[6, 'asc']]
+        });
+    });
+
+</script>
+
+{% endblock %}
